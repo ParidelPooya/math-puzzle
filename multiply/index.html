@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="main.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl as ct">
+    <div class="title">Math Puzzles</div>
+
+    <div class="alert">&nbsp;{{ct.msg}}&nbsp;</div>
+
+    <div class="kidz">{{ct.time}} - Correct:{{ct.correct}} &nbsp; - &nbsp;Wrong:{{ct.wrong}}</div>
+    <div class="big-number">
+        <span class="transparent">{{ct.sign}}</span>
+        {{ct.number1}}
+        <br/>
+        <span>{{ct.sign}}</span>
+        {{ct.number2}}
+        <br/>
+        ---------------
+    </div>
+    <form ng-submit="ct.next()">
+        <input class="kidz" ng-model="ct.answer"/>
+        <button class="kidz" ng-click="ct.next()">Next</button>
+    </form>
+
+    <div class="kidz">Answer {{ct.howManyMore}} more questions correctly to get a gift.</div>
+
+    <div class="kidz">
+        <img ng-repeat="row in ct.awards track by $index" ng-src="images/{{ct.set}}/{{row}}"/>
+        <img ng-repeat="row in ct.phs track by $index" ng-src="images/{{row}}"/>
+    </div>
+
+</body>
+</html>
