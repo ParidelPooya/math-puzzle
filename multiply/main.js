@@ -115,9 +115,9 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
 
         ct.sign="x";
 
-        ct.number1 = 1+Math.floor(Math.random()*9);
+        ct.number1 = 1+Math.floor(Math.random()*19);
 
-        ct.number2 = 1+Math.floor(Math.random()*9);
+        ct.number2 = 1+Math.floor(Math.random()*19);
 
         ct.correctAnswer=""+(parseInt(ct.number1,10)*parseInt(ct.number2,10));
 
