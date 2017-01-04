@@ -52,7 +52,7 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
         {correct:60,ratio:16},
         {correct:80,ratio:18},
         {correct:100,ratio:20}
-    ]
+    ];
 
     ct.next=function() {
         if(ct.answer=="")
@@ -79,7 +79,7 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
     }
 
     ct.giveAward=function(){
-        if(ct.awards.length>thresholds.length)
+        if(ct.awards.length>=thresholds.length)
         {
             ct.howManyMore="";
             return;
@@ -115,11 +115,11 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
         if(r>0.5){
             ct.sign="+";
 
-            ct.number1 = Math.round(Math.random()*20);
+            ct.number1 = Math.round(Math.random()*30);
             if(ct.number1<10)
                 ct.number1="0"+ct.number1;
 
-            ct.number2 = Math.round(Math.random()*20);
+            ct.number2 = Math.round(Math.random()*30);
 
             if(ct.number2<10)
                 ct.number2="0"+ct.number2;
@@ -132,8 +132,8 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
         {
             ct.sign="-";
 
-            var n1 = Math.round(Math.random()*20);
-            var n2 = Math.round(Math.random()*20);
+            var n1 = Math.round(Math.random()*30);
+            var n2 = Math.round(Math.random()*30);
 
             ct.number1=Math.max(n1,n2);
             ct.number2=Math.min(n1,n2);

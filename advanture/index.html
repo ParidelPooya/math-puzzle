@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="main.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl as ct">
+
+<div class="game-board">
+    <div class="lbl top-lbl-level">Level 1</div>
+    <div class="lbl top-lbl-level">Score 123</div>
+
+    <div class="play-area">
+        <div ng-repeat="ch in ct.chars" class="character" ng-class="ct.prepareClass(ch)"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
