@@ -7,14 +7,18 @@
     <title></title>
     <script src="main.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="myCtrl as ct">
+<body ng-app="myApp" ng-controller="myCtrl as ct" ng-keydown="ct.keypress($event)">
 
 <div class="game-board">
-    <div class="lbl top-lbl-level">Level 1</div>
-    <div class="lbl top-lbl-level">Score 123</div>
+    <div class="lbl top-lbl-level">Level {{ct.level}}</div>
+    <div class="lbl top-lbl-level">Score {{ct.score}}</div>
 
     <div class="play-area">
-        <div ng-repeat="ch in ct.chars" class="character" ng-class="ct.prepareClass(ch)"></div>
+        <div ng-repeat="ch in ct.chars" class="character" ng-class="ct.prepareClass(ch)" ng-click="ct.selectChar(ch)">
+            <span class="question" ng-class="{'sel-question':ch==ct.selectedChar}">
+                {{ch.math.question}}<span ng-show="ch.math.answer!=''">={{ch.math.answer}}</span>
+            </span>
+        </div>
     </div>
 
 </div>

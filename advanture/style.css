@@ -94,3 +94,14 @@ body{
 .row7{top:70%}
 .row8{top:80%}
 .row9{top:90%}
+
+.question{
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 4px;
+    padding:2px;
+}
+
+.sel-question{
+    background-color: #ffaaaa !important;
+}
