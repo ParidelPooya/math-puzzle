@@ -79,7 +79,7 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
     }
 
     ct.giveAward=function(){
-        if(ct.awards.length>thresholds.length)
+        if(ct.awards.length>=thresholds.length)
         {
             ct.howManyMore="";
             return;
@@ -115,9 +115,9 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
 
         ct.sign="x";
 
-        ct.number1 = 2+Math.floor(Math.random()*3);
+        ct.number1 = 1+Math.floor(Math.random()*9);
 
-        ct.number2 = 3+Math.floor(Math.random()*7);
+        ct.number2 = 1+Math.floor(Math.random()*9);
 
         ct.correctAnswer=""+(parseInt(ct.number1,10)*parseInt(ct.number2,10));
 
