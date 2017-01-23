@@ -9,9 +9,13 @@
 </head>
 <body ng-app="myApp" ng-controller="myCtrl as ct" ng-keydown="ct.keypress($event)">
 
-<div class="game-board">
+<div class="game-board" ng-style="ct.gameBoard">
+
     <div class="lbl top-lbl-level">Level {{ct.level}}</div>
     <div class="lbl top-lbl-level">Score {{ct.score}}</div>
+    <div class="lbl top-lbl-level">Correct {{ct.correct}}</div>
+    <div class="lbl top-lbl-level">Wrong {{ct.wrong}}</div>
+    <div class="lbl top-lbl-level">Time {{ct.time}}</div>
 
     <div class="play-area">
         <div ng-repeat="ch in ct.chars" class="character" ng-class="ct.prepareClass(ch)" ng-click="ct.selectChar(ch)">

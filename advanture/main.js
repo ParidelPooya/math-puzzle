@@ -6,6 +6,33 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$timeout,$interval) {
     var ct=this;
 
+    var startTime=new Date();
+
+    ct.time="00:00";
+    $interval(function(){
+        var sec=Math.floor(((new Date())-startTime)/1000);
+        var minutes=Math.floor(sec/60);
+
+        if(minutes<10)
+            minutes="0"+minutes;
+
+        sec=sec%60;
+
+        if(sec<10)
+            sec="0"+sec;
+
+        ct.time=minutes+":"+sec;
+    },1000);
+
+    ct.correct=0;
+    ct.wrong=0;
+
+    ct.gameBoard={};
+
+    var setGameBoard = function(){
+        ct.gameBoard["background-image"]="url('img/game-back" + ct.level + ".png')";
+    };
+
     var readSettings=function(section,defValue){
         if(typeof(localStorage[section])==="undefined"){
             localStorage[section]=defValue;
@@ -15,9 +42,17 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
         return localStorage[section];
     };
 
+    var writeSettings=function(section,value){
+        localStorage[section]=value;
+    };
+
     var checkAnswer=function(all,ch){
 
         if(ch.math.answer!==ch.math.correct){
+            if(ch.math.answer.length==ch.math.correct.length){
+                wrongAnswer();
+            }
+
             return;
         }
 
@@ -35,13 +70,35 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
 
             }
         }
+
+        if(all.length==0)
+            addNewChar();
+    };
+
+    var wrongAnswer=function(){
+        var audio = new Audio('sound/wrong.wav');
+        audio.play();
+
+        ct.wrong++;
     };
 
     var correctAnswer=function(){
+        ct.correct++;
         ct.score++;
-        if(ct.score>=50 && ct.chars.length==0){
+        if(ct.score>=25 && ct.chars.length<2){
             ct.level++;
-            ct.score=ct.score%50;
+
+            var audio = new Audio('sound/levelup.wav');
+            audio.play();
+
+            setGameBoard();
+            writeSettings('level',ct.level);
+            ct.score=ct.score%25;
+        }
+        else
+        {
+            var audio = new Audio('sound/correct.wav');
+            audio.play();
         }
     };
 
@@ -73,13 +130,14 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
     ct.score=parseInt(readSettings('score','0'));
 
     ct.mode="game";
+    setGameBoard();
     ct.selectedChar=null;
 
     var addNewChar=function(){
         var math=prepareMath();
 
         ct.chars.push({
-            type:'char' + Math.floor(1+Math.random()*2),
+            type:'char' + Math.floor(1+Math.random()*5),
             col:Math.floor(Math.random()*10),
             row:2*Math.floor(Math.random()*5),
             math:math
@@ -95,10 +153,9 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
     }
 
     $interval(function(){
-
         if(ct.mode==="game")
             addNewChar();
-    },5000);
+    },8000);
 
     ct.keypress=function(e){
         if(ct.selectedChar===null)
@@ -113,6 +170,9 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
         {
             ct.selectedChar.math.answer='';
 
+        }
+        else if(e.key.length>1){
+            return;
         }
         else
         {

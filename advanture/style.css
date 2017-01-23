@@ -23,7 +23,6 @@ body{
 .game-board{
     flex: 0 0 100%;
 
-    background-image: url("img/equestria.png");
     background-repeat:no-repeat;
     -webkit-background-size:cover;
     -moz-background-size:cover;
@@ -41,6 +40,7 @@ body{
     border: 2px solid #000000;
     display: inline-block;
     color:#ffffff;
+    font-family: cursive;
 }
 
 .top-lbl-level{
@@ -73,6 +73,24 @@ body{
     left:75%;
 }
 
+.char3{
+    background-image: url("img/enemy03.png");
+    top: 72%;
+    left:25%;
+}
+
+.char4{
+    background-image: url("img/enemy04.png");
+    top: 72%;
+    left:25%;
+}
+
+.char5{
+    background-image: url("img/enemy05.png");
+    top: 72%;
+    left:25%;
+}
+
 .col0{left:0%}
 .col1{left:10%}
 .col2{left:20%}
@@ -96,6 +114,9 @@ body{
 .row9{top:90%}
 
 .question{
+    font-family: cursive;
+    font-size: 18px;
+
     background-color: white;
     border: 2px solid blue;
     border-radius: 4px;
