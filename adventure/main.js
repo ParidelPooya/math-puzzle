@@ -103,7 +103,7 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
     };
 
     var prepareMath=function(level){
-        return question[0]();
+        return question[Math.floor(Math.random()*2)]();
     };
 
     var question=[];
@@ -122,7 +122,23 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
             correct:correct,
             answer:''
         }
-    }
+    };
+
+    question[1]=function(){
+        var sign="-";
+
+        var number1 = Math.round(Math.random()*30);
+
+        var number2 = Math.round(Math.random()*30);
+
+        var correct=""+ Math.abs(number1-number2);
+
+        return {
+            question:Math.max(number1,number2) + sign + Math.min(number1,number2),
+            correct:correct,
+            answer:''
+        }
+    };
 
     ct.chars=[];
 
@@ -155,6 +171,9 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
     $interval(function(){
         if(ct.mode==="game")
             addNewChar();
+
+            var audio = new Audio('sound/correct.wav');
+            audio.play();
     },8000);
 
     ct.keypress=function(e){
