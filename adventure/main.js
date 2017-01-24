@@ -76,8 +76,8 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
     };
 
     var wrongAnswer=function(){
-        var audio = new Audio('sound/wrong.wav');
-        audio.play();
+        //var audio = new Audio('sound/wrong.wav');
+        //audio.play();
 
         ct.wrong++;
     };
@@ -97,8 +97,8 @@ app.controller('myCtrl', function($scope,$timeout,$interval) {
         }
         else
         {
-            var audio = new Audio('sound/correct.wav');
-            audio.play();
+            //var audio = new Audio('sound/correct.wav');
+            //audio.play();
         }
     };
 
