@@ -1,0 +1,28 @@
+.title{
+    text-align: center;
+    color:white;
+    font-size: 49px;
+    background-color: darkred;
+}
+
+.alert{
+    text-align: center;
+    font-size: 32px;
+}
+
+.kidz{
+    font-size: 29px;
+    margin-left: 100px;
+}
+
+.big-number{
+    border:1px solid black;
+    display: inline-block;
+    font-size: 32px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.transparent{
+    color:transparent;
+}

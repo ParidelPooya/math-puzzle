@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="main.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl as ct">
+
+    <div ng-repeat="row in ct.questions" class="big-number">
+        <span class="transparent">{{row.sign}}</span>
+        {{row.number1}}
+        <br/>
+        <span>{{row.sign}}</span>
+        {{row.number2}}
+        <br/>--------<br/><br/>
+    </div>
+
+    <br/>
+
+    <div ng-repeat="row in ct.questions" class="big-number">
+        <span class="transparent">{{row.sign}}</span>
+        {{row.number1}}
+        <br/>
+        <span>{{row.sign}}</span>
+        {{row.number2}}
+        <br/>--------<br/>
+        {{row.correctAnswer}}
+    </div>
+    
+</body>
+</html>
