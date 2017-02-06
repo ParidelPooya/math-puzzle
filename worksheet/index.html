@@ -9,7 +9,16 @@
 </head>
 <body ng-app="myApp" ng-controller="myCtrl as ct">
 
-    <div ng-repeat="row in ct.questions" class="big-number">
+    <div class="no-print">
+        <select ng-model="ct.type" ng-change="ct.change()">
+            <option value="additon">additon</option>
+            <option value="subtract">sbtract</option>
+            <option value="add+sub">add+sub</option>
+            <option value="multiply">multiply</option>
+        </select>
+    </div>
+
+    <div ng-repeat="row in ct.questions track by $index" class="big-number">
         <span class="transparent">{{row.sign}}</span>
         {{row.number1}}
         <br/>
@@ -20,7 +29,7 @@
 
     <br/>
 
-    <div ng-repeat="row in ct.questions" class="big-number">
+    <div ng-repeat="row in ct.questions track by $index" class="big-number">
         <span class="transparent">{{row.sign}}</span>
         {{row.number1}}
         <br/>
@@ -29,6 +38,6 @@
         <br/>--------<br/>
         {{row.correctAnswer}}
     </div>
-    
+
 </body>
 </html>

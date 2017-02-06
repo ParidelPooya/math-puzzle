@@ -26,3 +26,11 @@
 .transparent{
     color:transparent;
 }
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
